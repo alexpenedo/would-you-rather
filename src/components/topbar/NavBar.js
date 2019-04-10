@@ -41,7 +41,7 @@ class NavBar extends React.Component {
     };
     handleNew = () => {
         this.handleClose();
-        this.props.history.push(`/new`)
+        this.props.history.push(`/add`)
     };
     handleHome = () => {
         this.handleClose();
@@ -49,7 +49,7 @@ class NavBar extends React.Component {
     };
     handleLeader = () => {
         this.handleClose();
-        this.props.history.push(`/leaders`)
+        this.props.history.push(`/leaderboard`)
     };
 
     render() {
