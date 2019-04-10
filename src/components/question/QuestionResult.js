@@ -5,27 +5,24 @@ import {connect} from "react-redux";
 import {withStyles} from "@material-ui/core";
 import PropTypes from "prop-types";
 
-const styles = theme => ({
+const styles = () => ({
     chip: {
         float: 'right'
     }
 });
 
-class QuestionResult extends React.Component {
-
-    render() {
-        const {text, authedUser, votes, total, classes} = this.props;
-        return (
-            <div>
-                <h4>Would you rather {text}?
-                    {votes.includes(authedUser) &&
-                    <Chip color="secondary" label="My vote" className={classes.chip}/>}
-                </h4>
-                <LinearProgress variant="determinate" value={votes.length / total * 100}/>
-                <h6>{votes.length} out of {total} votes</h6>
-            </div>
-        );
-    }
+function QuestionResult(props) {
+    const {text, authedUser, votes, total, classes} = props;
+    return (
+        <div>
+            <h4>Would you rather {text}?
+                {votes.includes(authedUser) &&
+                <Chip color="secondary" label="My vote" className={classes.chip}/>}
+            </h4>
+            <LinearProgress variant="determinate" value={votes.length / total * 100}/>
+            <h6>{votes.length} out of {total} votes</h6>
+        </div>
+    );
 }
 
 QuestionResult.propTypes = {

@@ -29,34 +29,31 @@ const styles = () => ({
     }
 });
 
-class UserStats extends React.Component {
-
-    render() {
-        const {classes, user} = this.props;
-        const questions = user.questions.length;
-        const answers = Object.keys(user.answers).length;
-        return (
-            <Card>
-                <AvatarTitleHeader user={user} title={user.name}/>
-                <CardContent>
-                    <Grid container spacing={24}>
-                        <Grid item xs={8}>
-                            <Paper className={classes.resume}>
-                                <p>Answered Questions: {answers}</p>
-                                <p> Created Questions: {questions}</p>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <h3>Score</h3>
-                                <div className={classes.score}>{answers + questions}</div>
-                            </Paper>
-                        </Grid>
+function UserStats(props) {
+    const {classes, user} = props;
+    const questions = user.questions.length;
+    const answers = Object.keys(user.answers).length;
+    return (
+        <Card>
+            <AvatarTitleHeader user={user} title={user.name}/>
+            <CardContent>
+                <Grid container spacing={24}>
+                    <Grid item xs={8}>
+                        <Paper className={classes.resume}>
+                            <p>Answered Questions: {answers}</p>
+                            <p> Created Questions: {questions}</p>
+                        </Paper>
                     </Grid>
-                </CardContent>
-            </Card>
-        );
-    }
+                    <Grid item xs={4}>
+                        <Paper className={classes.paper}>
+                            <h3>Score</h3>
+                            <div className={classes.score}>{answers + questions}</div>
+                        </Paper>
+                    </Grid>
+                </Grid>
+            </CardContent>
+        </Card>
+    );
 }
 
 UserStats.propTypes = {

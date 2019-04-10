@@ -62,7 +62,6 @@ class SignIn extends React.Component {
         event.preventDefault();
         if (this.state.user) {
             this.props.dispatch(login(this.state.user));
-            this.props.history.push('/');
         }
     };
 

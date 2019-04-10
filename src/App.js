@@ -30,8 +30,8 @@ class App extends Component {
                                     : <div className="layout">
                                         <Route path='/' exact component={QuestionTabs}/>
                                         <Route path='/question/:id' component={QuestionView}/>
-                                        <Route path='/new' component={NewQuestionForm}/>
-                                        <Route path='/leaders' component={LeaderBoard}/>
+                                        <Route path='/add' component={NewQuestionForm}/>
+                                        <Route path='/leaderboard' component={LeaderBoard}/>
                                     </div>}
                             </div>
                         </Fragment>

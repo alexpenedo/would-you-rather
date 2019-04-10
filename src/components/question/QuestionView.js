@@ -4,17 +4,17 @@ import CardContent from '@material-ui/core/CardContent';
 import QuestionResults from "./QuestionResults";
 import QuestionAnswerForm from "./QuestionAnswerForm";
 import AvatarTitleHeader from "./AvatarTitleHeader";
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
-class QuestionView extends React.Component {
+function QuestionView(props) {
+    const {author, answered, question} = props;
 
-    render() {
-        const {author, answered, question} = this.props;
-        const title = answered ? `Asked by ${author.name}:` : `${author.name} asks:`;
-
-        return (
-            <Card>
-                <AvatarTitleHeader title={title} user={author}/>
+    return (
+        !question
+            ? <p>Question not found!</p>
+            : <Card>
+                <AvatarTitleHeader title={answered ? `Asked by ${author.name}:` : `${author.name} asks:`}
+                                   user={author}/>
                 {answered ?
                     <CardContent>
                         <QuestionResults question={question}/>
@@ -25,19 +25,19 @@ class QuestionView extends React.Component {
                     </CardContent>
                 }
             </Card>
-        );
-    }
+    );
 }
 
 function mapStateToProps({authedUser, users, questions}, props) {
     const {id} = props.match.params;
     const question = props.match ? questions[props.match.params.id] : props.question;
-    return {
+
+    return question ? {
         authedUser,
         question,
         answered: Object.keys(users[authedUser].answers).includes(id),
         author: users[question.author],
-    }
+    } : null
 }
 
 export default connect(mapStateToProps)(QuestionView)

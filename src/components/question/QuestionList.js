@@ -8,18 +8,16 @@ const styles = {
     }
 };
 
-class QuestionList extends React.Component {
-    render() {
-        const {questionIds, classes} = this.props;
+function QuestionList(props) {
+    const {questionIds, classes} = props;
 
-        return (<ul>
-            {questionIds.map((id) => (
-                <div key={id} className={classes.question}>
-                    <Question id={id}/>
-                </div>
-            ))}
-        </ul>)
-    }
+    return (<ul>
+        {questionIds.map((id) => (
+            <div key={id} className={classes.question}>
+                <Question id={id}/>
+            </div>
+        ))}
+    </ul>)
 }
 
 export default withStyles(styles)(QuestionList);
